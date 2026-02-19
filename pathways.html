@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Career Exploration Program — Careers Lingo</title>
+  <meta name="description" content="A 15-day online Career Exploration Program for Form 4 leavers. Find your career pathway before you choose a course. Starts March 1.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── Variables ─────────────────────────────────────── */
+    :root {
+      --ink:    #1a1a18;
+      --maroon: #9d0654;
+      --paper:  #f5f2ec;
+      --muted:  #8a8580;
+      --rule:   #ddd9d1;
+      --gold:   #c8a84b;
+    }
+
+    /* ── Reset ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ── Layout ────────────────────────────────────────── */
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    section {
+      padding: 100px 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    /* ── Typography ────────────────────────────────────── */
+    h1, h2, h3 {
+      font-family: 'DM Serif Display', serif;
+      font-weight: 400;
+      line-height: 1.15;
+    }
+    h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); }
+    h2 { font-size: clamp(1.7rem, 4vw, 2.4rem); margin-bottom: 32px; }
+    em { font-style: italic; }
+
+    /* ── Buttons ───────────────────────────────────────── */
+    .btn {
+      display: inline-block;
+      padding: 13px 28px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      text-align: center;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.88; }
+    .btn-primary {
+      background: var(--maroon);
+      color: var(--paper);
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--maroon);
+      padding-left: 0;
+      font-weight: 500;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--ink);
+      font-size: 17px;
+      padding: 16px 36px;
+    }
+    .btn-maroon-outline {
+      background: transparent;
+      color: var(--paper);
+      border: 1px solid var(--paper);
+      font-size: 14px;
+      padding: 10px 22px;
+    }
+
+    /* ── Fade-in animation ─────────────────────────────── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* NAV                                                  */
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    #nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background: var(--paper);
+      border-bottom: 1px solid var(--rule);
+      z-index: 100;
+    }
+    .nav-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--ink);
+    }
+    .nav-logo:hover { color: var(--maroon); }
+    .nav-register {
+      background: var(--maroon);
+      color: var(--paper);
+      padding: 9px 20px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+    .nav-register:hover { opacity: 0.88; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* HERO                                                 */
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    #hero {
+      border-top: none;
+      padding-top: 160px;
+      padding-bottom: 100px;
+    }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--maroon);
+      margin-bottom: 24px;
+    }
+    .eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--maroon);
+      flex-shrink: 0;
+    }
+    #hero h1 {
+      margin-bottom: 20px;
+    }
+    #hero h1 em {
+      color: var(--maroon);
+    }
+    .hero-sub {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 36px;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+    .hero-ctas {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+    .info-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--rule);
+    }
+    .info-bar-item {
+      padding: 18px 20px;
+      border-right: 1px solid var(--rule);
+    }
+    .info-bar-item:last-child { border-right: none; }
+    .info-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .info-value {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.25rem;
+      color: var(--ink);
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* PROBLEM                                              */
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    #problem h2 em { color: var(--maroon); }
+
+    .problem-list { margin-top: 48px; }
+    .problem-item {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 0 32px;
+      padding: 36px 0;
+      border-top: 1px solid var(--rule);
+    }
+    .problem-item:last-child { border-bottom: 1px solid var(--rule); }
+    .problem-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      color: var(--rule);
+      padding-top: 2px;
+    }
+    .problem-body h3 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 12px;
+      color: var(--ink);
+    }
+    .problem-body p {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 12px;
+      line-height: 1.65;
+    }
+    .problem-body ul {
+      padding-left: 0;
+      margin-bottom: 12px;
+    }
+    .problem-body ul li {
+      font-size: 15px;
+      color: var(--muted);
+      padding: 4px 0;
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.55;
+    }
+    .problem-body ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--rule);
+      font-size: 13px;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* SOLUTION (full-bleed maroon)                         */
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    #solution {
+      background: var(--maroon);
+      color: var(--paper);
+      border-top: none;
+    }
+    #solution h2 { color: var(--paper); }
+    #solution h2 em { font-style: italic; color: var(--paper); }
+    .solution-intro {
+      font-size: 16px;
+      color: rgba(245, 242, 236, 0.7);
+      max-width: 560px;
+      margin-bottom: 48px;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+    .steps-flow {
+      display: flex;
+      gap: 0;
+    }
+    .step-box {
+      flex: 1;
+      border: 1px solid rgba(245, 242, 236, 0.25);
+      border-right: none;
+      padding: 24px 20px;
+    }
+    .step-box:last-child { border-right: 1px solid rgba(245, 242, 236, 0.25); }
+    .step-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(245, 242, 236, 0.45);
+      margin-bottom: 10px;
+    }
+    .step-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
+      color: var(--paper);
+      line-height: 1.3;
+    }
+    .solution-note {
+      margin-top: 32px;
+      font-size: 14px;
+      font-style: italic;
+      color: rgba(245, 242, 236, 0.55);
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* PATHWAYS                                             */
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    #pathways h2 em { color: var(--maroon); }
+    .pathways-intro {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 48px;
+      font-weight: 300;
+    }
+    .pathways-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--rule);
+      border-left: 1px solid var(--rule);
+    }
+    .pathway-cell {
+      border-right: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      padding: 20px 18px;
+    }
+    .pathway-name {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+    .pathway-cell ul {
+      padding: 0;
+    }
+    .pathway-cell ul li {
+      font-size: 12px;
+      color: var(--muted);
+      padding: 3px 0;
+      padding-left: 12px;
+      position: relative;
+      line-height: 1.45;
+    }
+    .pathway-cell ul li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--muted);
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* HOW IT WORKS                                         */
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    #how-it-works h2 em { color: var(--maroon); }
+    .timeline { margin-top: 48px; }
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 0 32px;
+      padding: 28px 0;
+      border-top: 1px solid var(--rule);
+    }
+    .timeline-row:last-child { border-bottom: 1px solid var(--rule); }
+    .day-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--maroon);
+      padding-top: 3px;
+    }
+    .phase-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .phase-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .hours-callout {
+      margin-top: 40px;
+      border: 1px solid var(--rule);
+      padding: 28px 32px;
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+    }
+    .hours-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 3.5rem;
+      color: var(--maroon);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .hours-text {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* WHAT YOU GAIN                                        */
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    #gains h2 em { color: var(--maroon); }
+    .gains-list { margin-top: 48px; }
+    .gain-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 22px 0;
+      border-top: 1px solid var(--rule);
+    }
+    .gain-item:last-child { border-bottom: 1px solid var(--rule); }
+    .gain-text {
+      font-size: 16px;
+      color: var(--ink);
+      font-weight: 400;
+    }
+    .gain-check {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--maroon);
+      color: var(--paper);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+    .gains-disclaimer {
+      margin-top: 28px;
+      font-size: 13px;
+      color: var(--muted);
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* PROGRAM SNAPSHOT                                     */
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    #snapshot h2 em { color: var(--maroon); }
+    .snapshot-card {
+      margin-top: 48px;
+      border: 1px solid var(--rule);
+      overflow: hidden;
+    }
+    .snapshot-header {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 20px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .snapshot-header-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
+    }
+    .snapshot-header-url {
+      font-size: 12px;
+      color: rgba(245, 242, 236, 0.5);
+      font-weight: 300;
+    }
+    .snapshot-row {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      border-top: 1px solid var(--rule);
+    }
+    .snapshot-label {
+      padding: 16px 28px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      border-right: 1px solid var(--rule);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 11px;
+    }
+    .snapshot-value {
+      padding: 16px 28px;
+      font-size: 15px;
+      color: var(--ink);
+    }
+    .snapshot-value.fee {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.8rem;
+      color: var(--maroon);
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* FINAL CTA (full-bleed maroon)                        */
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    #cta {
+      background: var(--maroon);
+      border-top: none;
+      text-align: center;
+    }
+    #cta h2 {
+      color: var(--paper);
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 16px;
+    }
+    .cta-sub {
+      font-size: 16px;
+      color: rgba(245, 242, 236, 0.6);
+      margin-bottom: 40px;
+      font-weight: 300;
+      max-width: 440px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.65;
+    }
+    .cta-reassurance {
+      margin-top: 28px;
+      font-size: 13px;
+      color: rgba(245, 242, 236, 0.45);
+      letter-spacing: 0.02em;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* FOOTER                                               */
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    #footer {
+      padding: 32px 0;
+      border-top: 1px solid var(--rule);
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-copy {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .footer-copy a:hover { color: var(--maroon); }
+    .footer-url {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .footer-url:hover { color: var(--maroon); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* STICKY BAR                                           */
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    #sticky-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: var(--ink);
+      color: var(--paper);
+      z-index: 99;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+    .sticky-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .sticky-info {
+      font-size: 13px;
+      color: rgba(245, 242, 236, 0.7);
+      font-weight: 300;
+    }
+    .sticky-info strong {
+      color: var(--paper);
+      font-weight: 500;
+    }
+    .btn-sticky {
+      background: var(--maroon);
+      color: var(--paper);
+      padding: 10px 20px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .btn-sticky:hover { opacity: 0.88; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* MOBILE                                               */
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    @media (max-width: 600px) {
+      section { padding: 64px 0; }
+      #hero { padding-top: 110px; }
+
+      .info-bar {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .info-bar-item:nth-child(2) { border-right: none; }
+      .info-bar-item:nth-child(3) {
+        border-top: 1px solid var(--rule);
+      }
+      .info-bar-item:nth-child(4) {
+        border-top: 1px solid var(--rule);
+        border-right: none;
+      }
+
+      .problem-item {
+        grid-template-columns: 40px 1fr;
+        gap: 0 20px;
+      }
+
+      .steps-flow {
+        flex-wrap: wrap;
+      }
+      .step-box {
+        flex: 1 1 calc(50% - 1px);
+        border-right: 1px solid rgba(245, 242, 236, 0.25);
+      }
+      .step-box:nth-child(2) { border-right: none; }
+      .step-box:nth-child(3) {
+        border-top: none;
+      }
+      .step-box:nth-child(4) {
+        border-right: none;
+        border-top: none;
+      }
+
+      .pathways-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .timeline-row {
+        grid-template-columns: 90px 1fr;
+        gap: 0 16px;
+      }
+
+      .hours-callout {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .snapshot-row {
+        grid-template-columns: 140px 1fr;
+      }
+      .snapshot-label { padding: 14px 16px; }
+      .snapshot-value { padding: 14px 16px; }
+      .snapshot-header { padding: 16px; }
+
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+
+      .sticky-inner { flex-direction: column; align-items: flex-start; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ──────────────────────────────────────────── -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="https://careerslingo.com" class="nav-logo">Careers Lingo</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSd1OouVhoA3Qqa_Z1T6XPG4WsiNyhgDqHpzpGwfJXAVPNhwgg/viewform?usp=sharing&ouid=110386380589016452955" class="nav-register" target="_blank" rel="noopener">Register</a>
+    </div>
+  </nav>
+
+  <!-- ── HERO ─────────────────────────────────────────── -->
+  <section id="hero">
+    <div class="container">
+      <p class="eyebrow fade-in">Career Exploration Program · Starts March 1</p>
+      <h1 class="fade-in">You finished Form 4.<br><em>Now what?</em></h1>
+      <p class="hero-sub fade-in">Before you choose a university course or TVET programme, you need to understand which career pathway fits you — and why. This 15-day programme gives you that clarity.</p>
+      <div class="hero-ctas fade-in">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd1OouVhoA3Qqa_Z1T6XPG4WsiNyhgDqHpzpGwfJXAVPNhwgg/viewform?usp=sharing&ouid=110386380589016452955" class="btn btn-primary" target="_blank" rel="noopener">Register Now</a>
+        <a href="#how-it-works" class="btn btn-ghost">See how it works</a>
+      </div>
+      <div class="info-bar fade-in">
+        <div class="info-bar-item">
+          <div class="info-label">Duration</div>
+          <div class="info-value">15 days</div>
+        </div>
+        <div class="info-bar-item">
+          <div class="info-label">Daily time</div>
+          <div class="info-value">2 hrs/day</div>
+        </div>
+        <div class="info-bar-item">
+          <div class="info-label">Mode</div>
+          <div class="info-value">Online</div>
+        </div>
+        <div class="info-bar-item">
+          <div class="info-label">Cost</div>
+          <div class="info-value">KES 3,000</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROBLEM ──────────────────────────────────────── -->
+  <section id="problem">
+    <div class="container">
+      <h2 class="fade-in">Most students pick a course <em>without proper research.</em></h2>
+      <div class="problem-list">
+        <div class="problem-item fade-in">
+          <div class="problem-num">01</div>
+          <div class="problem-body">
+            <h3>The student's journey</h3>
+            <p>An uninformed career decision affects more than just school.</p>
+            <p>Students may:</p>
+            <ul>
+              <li>Enter courses they do not enjoy</li>
+              <li>Struggle to stay motivated</li>
+              <li>Change courses or stop midway</li>
+              <li>Lose time that cannot be recovered</li>
+              <li>Feel stuck or uncertain about the future</li>
+            </ul>
+            <p>A wrong start often leads to delays. Delays affect confidence and momentum.</p>
+          </div>
+        </div>
+        <div class="problem-item fade-in">
+          <div class="problem-num">02</div>
+          <div class="problem-body">
+            <h3>The family's reality</h3>
+            <p>Unclear career decisions come with real costs.</p>
+            <p>Parents may:</p>
+            <ul>
+              <li>Pay fees for courses that are later abandoned</li>
+              <li>Support repeated course changes</li>
+              <li>Spend more time and money than planned</li>
+              <li>Watch their child lose direction and motivation</li>
+            </ul>
+            <p>What was meant to be progress becomes uncertainty.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SOLUTION ─────────────────────────────────────── -->
+  <section id="solution">
+    <div class="container">
+      <h2 class="fade-in">Start with your pathway. <em>Then choose a course.</em></h2>
+      <p class="solution-intro fade-in">Most students jump straight to picking a university course. This programme reverses that process — starting with who you are and what kind of work suits you, then working forward to specific career options and the qualifications that get you there.</p>
+      <div class="steps-flow fade-in">
+        <div class="step-box">
+          <div class="step-label">Step 1</div>
+          <div class="step-title">Career Pathway</div>
+        </div>
+        <div class="step-box">
+          <div class="step-label">Step 2</div>
+          <div class="step-title">Career</div>
+        </div>
+        <div class="step-box">
+          <div class="step-label">Step 3</div>
+          <div class="step-title">Education Route</div>
+        </div>
+        <div class="step-box">
+          <div class="step-label">Step 4</div>
+          <div class="step-title">Course</div>
+        </div>
+      </div>
+      <p class="solution-note fade-in">Most students start at Step 4. This programme starts at Step 1.</p>
+    </div>
+  </section>
+
+  <!-- ── PATHWAYS ──────────────────────────────────────── -->
+  <section id="pathways">
+    <div class="container">
+      <h2 class="fade-in">Thirty career <em>pathway groups.</em></h2>
+      <p class="pathways-intro fade-in">During the programme you explore all thirty pathway groups before narrowing your focus. Here is what each one covers.</p>
+      <div class="pathways-grid fade-in">
+
+        <div class="pathway-cell">
+          <div class="pathway-name">Business, Administration &amp; Office Careers</div>
+          <ul>
+            <li>Office Manager</li>
+            <li>Business Analyst</li>
+            <li>Executive Assistant</li>
+            <li>Operations Coordinator</li>
+            <li>Administrative Officer</li>
+          </ul>
+        </div>
+
+        <div class="pathway-cell">
+          <div class="pathway-name">Agriculture, Food &amp; Agribusiness</div>
+          <ul>
+            <li>Agronomist</li>
+            <li>Farm Manager</li>
+            <li>Food Scientist</li>
+            <li>Agricultural Economist</li>
+            <li>Crop Production Specialist</li>
+          </ul>
+        </div>
+
+        <div class="pathway-cell">
+          <div class="pathway-name">Aviation, Aerospace &amp; Flight Services</div>
+          <ul>
+            <li>Commercial Pilot</li>
+            <li>Air Traffic Controller</li>
+            <li>Aircraft Maintenance Engineer</li>
+            <li>Flight Dispatcher</li>
+            <li>Cabin Crew Member</li>
+          </ul>
+        </div>
+
+        <div class="pathway-cell">
+          <div class="pathway-name">Environment, Climate &amp; Sustainability</div>
+          <ul>
+            <li>Environmental Scientist</li>
+            <li>Climate Policy Analyst</li>
+            <li>Sustainability Consultant</li>
+            <li>Conservation Officer</li>
+            <li>Renewable Energy Analyst</li>
+          </ul>
+        </div>
+
+        <div class="pathway-cell">
+          <div class="pathway-name">Consulting, Advisory &amp; Professional Services</div>
+          <ul>
+            <li>Management Consultant</li>
+            <li>Strategy Analyst</li>
+            <li>Business Advisor</li>
+            <li>Risk Consultant</li>
+            <li>Policy Analyst</li>
+          </ul>
+        </div>
+
+        <div class="pathway-cell">
+          <div class="pathway-name">Media, Content, Film &amp; Communication</div>
+          <ul>
+            <li>Journalist</li>
+            <li>Content Creator</li>
+            <li>Film Director</li>
+            <li>Public Relations Officer</li>
+            <li>Broadcast Presenter</li>
+          </ul>
+        </div>
+
+        <div class="pathway-cell">
+          <div class="pathway-name">Customer Service, Call Centers &amp; Client Relations</div>
+          <ul>
+            <li>Customer Service Representative</li>
+            <li>Call Centre Manager</li>
+            <li>Client Success Manager</li>
+            <li>Support Specialist</li>
+            <li>CRM Analyst</li>
+          </ul>
+        </div>
+
+        <div class="pathway-cell">
+          <div class="pathway-name">Data, Analytics, Research &amp; Intelligence</div>
+          <ul>
+            <li>Data Analyst</li>
+            <li>Business Intelligence Analyst</li>
+            <li>Research Scientist</li>
+            <li>Statistician</li>
+            <li>Data Engineer</li>
+          </ul>
+        </div>
+
+        <div class="pathway-cell">
+          <div class="pathway-name">Design, Creative Arts &amp; Visual Communication</div>
+          <ul>
+            <li>Graphic Designer</li>
+            <li>UX/UI Designer</li>
+            <li>Illustrator</li>
+            <li>Art Director</li>
+            <li>Visual Communications Specialist</li>
+          </ul>
+        </div>
+
+        <div class="pathway-cell">
+          <div class="pathway-name">Education, Teaching &amp; Training</div>
+          <ul>
+            <li>Secondary School Teacher</li>
+            <li>Curriculum Developer</li>
+            <li>Education Administrator</li>
+            <li>Corporate Trainer</li>
+            <li>Early Childhood Educator</li>
+          </ul>
+        </div>
+
+        <div class="pathway-cell">
+          <div class="pathway-name">Finance, Banking &amp; Investment</div>
+          <ul>
+            <li>Financial Analyst</li>
+            <li>Investment Banker</li>
+            <li>Accountant</li>
+            <li>Actuary</li>
+            <li>Credit Analyst</li>
+          </ul>
+        </div>
+
+        <div class="pathway-cell">
+          <div class="pathway-name">Healthcare, Medical &amp; Wellness</div>
+          <ul>
+            <li>Doctor</li>
+            <li>Nurse</li>
+            <li>Clinical Pharmacist</li>
+            <li>Medical Laboratory Scientist</li>
+            <li>Physiotherapist</li>
+          </ul>
+        </div>
+
+        <div class="pathway-cell">
+          <div class="pathway-name">Hospitality, Tourism, Travel &amp; Events</div>
+          <ul>
+            <li>Hotel Manager</li>
+            <li>Tour Guide</li>
+            <li>Event Planner</li>
+            <li>Front Office Manager</li>
+            <li>Travel Consultant</li>
+          </ul>
+        </div>
+
+        <div class="pathway-cell">
+          <div class="pathway-name">Human Resources, People &amp; Talent</div>
+          <ul>
+            <li>HR Manager</li>
+            <li>Talent Acquisition Specialist</li>
+            <li>Compensation &amp; Benefits Analyst</li>
+            <li>Training &amp; Development Officer</li>
+            <li>HR Business Partner</li>
+          </ul>
+        </div>
+
+        <div class="pathway-cell">
+          <div class="pathway-name">Information Technology &amp; Cybersecurity</div>
+          <ul>
+            <li>IT Support Specialist</li>
+            <li>Network Engineer</li>
+            <li>Cybersecurity Analyst</li>
+            <li>Systems Administrator</li>
+            <li>Cloud Architect</li>
+          </ul>
+        </div>
+
+        <div class="pathway-cell">
+          <div class="pathway-name">Law, Legal &amp; Justice Services</div>
+          <ul>
+            <li>Advocate / Lawyer</li>
+            <li>Legal Researcher</li>
+            <li>Court Administrator</li>
+            <li>Compliance Officer</li>
+            <li>Paralegal</li>
+          </ul>
+        </div>
+
+        <div class="pathway-cell">
+          <div class="pathway-name">Marketing, Advertising, Branding &amp; PR</div>
+          <ul>
+            <li>Marketing Manager</li>
+            <li>Brand Strategist</li>
+            <li>Digital Marketer</li>
+            <li>Advertising Executive</li>
+            <li>PR Specialist</li>
+          </ul>
+        </div>
+
+        <div class="pathway-cell">
+          <div class="pathway-name">Operations, Supply Chain, Manufacturing &amp; Logistics</div>
+          <ul>
+            <li>Supply Chain Manager</li>
+            <li>Procurement Officer</li>
+            <li>Warehouse Manager</li>
+            <li>Quality Control Analyst</li>
+            <li>Logistics Coordinator</li>
+          </ul>
+        </div>
+
+        <div class="pathway-cell">
+          <div class="pathway-name">Product, Innovation &amp; Entrepreneurship</div>
+          <ul>
+            <li>Product Manager</li>
+            <li>Innovation Analyst</li>
+            <li>Entrepreneur</li>
+            <li>Business Developer</li>
+            <li>Startup Founder</li>
+          </ul>
+        </div>
+
+        <div class="pathway-cell">
+          <div class="pathway-name">Project &amp; Program Management</div>
+          <ul>
+            <li>Project Manager</li>
+            <li>Programme Coordinator</li>
+            <li>PMO Analyst</li>
+            <li>Agile Scrum Master</li>
+            <li>Change Management Specialist</li>
+          </ul>
+        </div>
+
+        <div class="pathway-cell">
+          <div class="pathway-name">Sales, Business Development &amp; Retail</div>
+          <ul>
+            <li>Sales Manager</li>
+            <li>Business Development Executive</li>
+            <li>Retail Buyer</li>
+            <li>Key Account Manager</li>
+            <li>Sales Analyst</li>
+          </ul>
+        </div>
+
+        <div class="pathway-cell">
+          <div class="pathway-name">Software, Programming &amp; Digital Products</div>
+          <ul>
+            <li>Software Developer</li>
+            <li>Mobile App Developer</li>
+            <li>DevOps Engineer</li>
+            <li>Web Developer</li>
+            <li>Backend Engineer</li>
+          </ul>
+        </div>
+
+        <div class="pathway-cell">
+          <div class="pathway-name">Engineering, Technical &amp; Skilled Trades (TVET)</div>
+          <ul>
+            <li>Civil Engineer</li>
+            <li>Electrical Technician</li>
+            <li>Mechanical Engineer</li>
+            <li>Plumber</li>
+            <li>Welder</li>
+          </ul>
+        </div>
+
+        <div class="pathway-cell">
+          <div class="pathway-name">Construction, Real Estate &amp; Built Environment</div>
+          <ul>
+            <li>Architect</li>
+            <li>Quantity Surveyor</li>
+            <li>Real Estate Agent</li>
+            <li>Urban Planner</li>
+            <li>Site Manager</li>
+          </ul>
+        </div>
+
+        <div class="pathway-cell">
+          <div class="pathway-name">Energy, Utilities &amp; Power Systems</div>
+          <ul>
+            <li>Power Systems Engineer</li>
+            <li>Energy Auditor</li>
+            <li>Electrical Technician</li>
+            <li>Renewable Energy Technologist</li>
+            <li>Grid Analyst</li>
+          </ul>
+        </div>
+
+        <div class="pathway-cell">
+          <div class="pathway-name">Transport, Mobility &amp; Logistics Services</div>
+          <ul>
+            <li>Transport Manager</li>
+            <li>Fleet Manager</li>
+            <li>Logistics Planner</li>
+            <li>Route Analyst</li>
+            <li>Freight Coordinator</li>
+          </ul>
+        </div>
+
+        <div class="pathway-cell">
+          <div class="pathway-name">Public Service, Government &amp; Governance</div>
+          <ul>
+            <li>Civil Servant</li>
+            <li>Policy Officer</li>
+            <li>Government Affairs Manager</li>
+            <li>Public Administrator</li>
+            <li>Diplomat</li>
+          </ul>
+        </div>
+
+        <div class="pathway-cell">
+          <div class="pathway-name">Security, Defence &amp; Public Safety</div>
+          <ul>
+            <li>Police Officer</li>
+            <li>Military Officer</li>
+            <li>Security Manager</li>
+            <li>Intelligence Analyst</li>
+            <li>Fire Safety Officer</li>
+          </ul>
+        </div>
+
+        <div class="pathway-cell">
+          <div class="pathway-name">Social Services, Community &amp; Development Work</div>
+          <ul>
+            <li>Social Worker</li>
+            <li>Community Development Officer</li>
+            <li>NGO Programme Manager</li>
+            <li>Youth Worker</li>
+            <li>Development Consultant</li>
+          </ul>
+        </div>
+
+        <div class="pathway-cell">
+          <div class="pathway-name">Sports, Fitness &amp; Recreation</div>
+          <ul>
+            <li>Sports Coach</li>
+            <li>Fitness Trainer</li>
+            <li>Sports Administrator</li>
+            <li>Physical Education Teacher</li>
+            <li>Recreation Manager</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HOW IT WORKS ──────────────────────────────────── -->
+  <section id="how-it-works">
+    <div class="container">
+      <h2 class="fade-in">Structured. <em>Day by day.</em></h2>
+      <p class="fade-in" style="color: var(--muted); font-size: 16px; font-weight: 300; max-width: 500px;">Each day of the programme has a clear focus. Here is the full 15-day structure.</p>
+
+      <div class="timeline fade-in">
+        <div class="timeline-row">
+          <div class="day-label">Days 1–3</div>
+          <div>
+            <div class="phase-title">Self-Discovery</div>
+            <div class="phase-desc">Understand your interests, values, work style preferences, and personality strengths. Build the foundation for an informed career decision.</div>
+          </div>
+        </div>
+        <div class="timeline-row">
+          <div class="day-label">Days 4–6</div>
+          <div>
+            <div class="phase-title">Career Pathway Exploration</div>
+            <div class="phase-desc">Survey all thirty career pathway groups. Learn what each field involves, who thrives in it, and how it connects to your self-assessment results.</div>
+          </div>
+        </div>
+        <div class="timeline-row">
+          <div class="day-label">Days 7–9</div>
+          <div>
+            <div class="phase-title">Shortlisting &amp; Comparison</div>
+            <div class="phase-desc">Narrow your list to three to five pathway groups. Compare them side by side using a structured evaluation framework.</div>
+          </div>
+        </div>
+        <div class="timeline-row">
+          <div class="day-label">Days 10–12</div>
+          <div>
+            <div class="phase-title">Pathway → Careers → Courses</div>
+            <div class="phase-desc">Drill into specific career options within your chosen pathways. Map each career to its required education routes — university, TVET, or professional certification.</div>
+          </div>
+        </div>
+        <div class="timeline-row">
+          <div class="day-label">Days 13–14</div>
+          <div>
+            <div class="phase-title">Career Decision-Making</div>
+            <div class="phase-desc">Apply a structured decision-making process to finalise your primary pathway choice and a backup. Learn how to evaluate options without second-guessing.</div>
+          </div>
+        </div>
+        <div class="timeline-row">
+          <div class="day-label">Day 15</div>
+          <div>
+            <div class="phase-title">Career Action Planning</div>
+            <div class="phase-desc">Build a practical, step-by-step action plan for the next twelve months. Leave the programme knowing exactly what to do next.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hours-callout fade-in">
+        <div class="hours-num">2</div>
+        <div class="hours-text">hours per day. Guided online sessions — structured, practical, and designed to fit into your schedule. No prior experience or qualifications needed to participate.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHAT YOU GAIN ─────────────────────────────────── -->
+  <section id="gains">
+    <div class="container">
+      <h2 class="fade-in">Leave with more than <em>a decision.</em></h2>
+      <div class="gains-list">
+        <div class="gain-item fade-in">
+          <span class="gain-text">Clear career pathway choice</span>
+          <span class="gain-check">✓</span>
+        </div>
+        <div class="gain-item fade-in">
+          <span class="gain-text">Backup pathway</span>
+          <span class="gain-check">✓</span>
+        </div>
+        <div class="gain-item fade-in">
+          <span class="gain-text">Understanding of university vs TVET routes</span>
+          <span class="gain-check">✓</span>
+        </div>
+        <div class="gain-item fade-in">
+          <span class="gain-text">Confidence in course selection</span>
+          <span class="gain-check">✓</span>
+        </div>
+        <div class="gain-item fade-in">
+          <span class="gain-text">Practical career action plan</span>
+          <span class="gain-check">✓</span>
+        </div>
+      </div>
+      <p class="gains-disclaimer fade-in">This programme provides career clarity and a structured plan. It does not guarantee university placement or employment afterwards.</p>
+    </div>
+  </section>
+
+  <!-- ── PROGRAM SNAPSHOT ──────────────────────────────── -->
+  <section id="snapshot">
+    <div class="container">
+      <h2 class="fade-in"><em>Everything at a glance.</em></h2>
+      <div class="snapshot-card fade-in">
+        <div class="snapshot-header">
+          <span class="snapshot-header-title">Career Exploration Program</span>
+          <span class="snapshot-header-url">careerslingo.com/pathways</span>
+        </div>
+        <div class="snapshot-row">
+          <div class="snapshot-label">Start date</div>
+          <div class="snapshot-value">March 1, 2025</div>
+        </div>
+        <div class="snapshot-row">
+          <div class="snapshot-label">Duration</div>
+          <div class="snapshot-value">15 days</div>
+        </div>
+        <div class="snapshot-row">
+          <div class="snapshot-label">Daily commitment</div>
+          <div class="snapshot-value">2 hours per day</div>
+        </div>
+        <div class="snapshot-row">
+          <div class="snapshot-label">Delivery mode</div>
+          <div class="snapshot-value">Fully online — anywhere in Kenya</div>
+        </div>
+        <div class="snapshot-row">
+          <div class="snapshot-label">What you receive</div>
+          <div class="snapshot-value">Career pathway report, backup pathway, education route map, 12-month action plan</div>
+        </div>
+        <div class="snapshot-row">
+          <div class="snapshot-label">Programme fee</div>
+          <div class="snapshot-value fee">KES 3,000</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FINAL CTA ─────────────────────────────────────── -->
+  <section id="cta">
+    <div class="container">
+      <h2 class="fade-in">Start March 1.</h2>
+      <p class="cta-sub fade-in">Fifteen days. Two hours a day. One clear direction. Register now to secure your place in the Career Exploration Program.</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSd1OouVhoA3Qqa_Z1T6XPG4WsiNyhgDqHpzpGwfJXAVPNhwgg/viewform?usp=sharing&ouid=110386380589016452955" class="btn btn-gold fade-in" target="_blank" rel="noopener">Register today — Only 0 slots available</a>
+      <p class="cta-reassurance fade-in">Fully online · Anywhere in Kenya · KES 3,000</p>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ────────────────────────────────────────── -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-copy">© 2025 <a href="https://careerslingo.com">Careers Lingo</a></p>
+        <a href="https://careerslingo.com/pathways" class="footer-url">careerslingo.com/pathways</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── STICKY BAR ────────────────────────────────────── -->
+  <div id="sticky-bar">
+    <div class="sticky-inner">
+      <p class="sticky-info"><strong>Career Exploration Program</strong> · KES 3,000 · Starts March 1</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSd1OouVhoA3Qqa_Z1T6XPG4WsiNyhgDqHpzpGwfJXAVPNhwgg/viewform?usp=sharing&ouid=110386380589016452955" class="btn-sticky" target="_blank" rel="noopener">Register Now</a>
+    </div>
+  </div>
+
+  <!-- ── JAVASCRIPT ────────────────────────────────────── -->
+  <script>
+    // Fade-in on scroll
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.08 });
+    fadeEls.forEach(function(el) { observer.observe(el); });
+
+    // Sticky bar: show when hero bottom exits viewport
+    var hero = document.getElementById('hero');
+    var stickyBar = document.getElementById('sticky-bar');
+    window.addEventListener('scroll', function() {
+      var heroBottom = hero.getBoundingClientRect().bottom;
+      if (heroBottom < 0) {
+        stickyBar.style.transform = 'translateY(0)';
+      } else {
+        stickyBar.style.transform = 'translateY(100%)';
+      }
+    }, { passive: true });
+  </script>
+</body>
+</html>
